@@ -1,11 +1,16 @@
 # This is source code I found from an example that uses 
 #
 #
-client_id = 'Your Genius Client ID'
-client_secret = 'Your Genius Client Secret'
-client_access_token = 'Your Genius Access Token'
+#client_id = 'Your Genius Client ID'
+#client_secret = 'Your Genius Client Secret'
+#client_access_token = 'Your Genius Access Token'
 
-import plot_albums
+client_secret = 'QFNFCGpypcgHmZdsR028NANEPBd5QYFqAB5jz5W2yMoESGz08wpHtNtLR3lPAv9Hhzj91R5q4jF2XLLMiF1Rkw'
+client_access_token = 'FKtRnUIwZYbGiVjrV2s7xIEqGqkVI5sZp5GkJyL4g_Q8T9vFCugO57cnKtVKusFm'
+client_id = 'H0CWEIbUaM1VzbMDG3XyXYR-eH1IfQ0JRHeYAAuM35th2-Z-UQP0p6jpB4OIG7DS'
+
+
+#import plot_albums
 import string
 import requests
 import nltk
@@ -101,7 +106,9 @@ class ArtistQuery:
         return albums_list
 
 if __name__ == '__main__':
-    artist_name = argv[1]
+    artist_name = "Drake"
     artist = ArtistQuery(client_access_token)
     albums_list = artist.get_album_csv(artist_name, artist_name + '.csv')
-    plot_albums.plot_album_ngrams(albums_list, artist_name)
+    import pandas as pd
+    pd.to_csv('/albums_list.csv')
+    #plot_albums.plot_album_ngrams(albums_list, artist_name)

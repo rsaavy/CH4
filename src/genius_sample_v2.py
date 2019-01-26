@@ -31,7 +31,7 @@ def lyrics_from_song_api_path(song_api_path):
 
 if __name__ == "__main__":
   search_url = base_url + "/search"
-  data = {'q': song_title}
+  data = {'q': song_title}  
   response = requests.get(search_url, data=data, headers=headers)
   json = response.json()
   song_info = None

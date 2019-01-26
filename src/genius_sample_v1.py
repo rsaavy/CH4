@@ -8,10 +8,10 @@ Created on Sat Jan 26 14:30:07 2019
 import requests
 
 base_url = "http://api.genius.com"
-headers = {'Authorization': 'Bearer TOKEN'}
+headers = {'Authorization': 'Bearer cLHMC_-w1kqA8t52jt6u_lS_hMefcneBiY6xX9b9fYU2rYv90ModFsFNHbomYukT'}
 search_url = base_url + "/search"
-song_title = "Capsized"
-artist_name = "Andrew Bird"
+song_title = "bohemian rhapsody"
+artist_name = "Queen"
 data = {'q': song_title}
 response = requests.get(search_url, data=data, headers=headers)
 json = response.json()

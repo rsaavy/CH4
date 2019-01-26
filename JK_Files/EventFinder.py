@@ -1,12 +1,12 @@
 # Client ID phq.aFf5H8cwziREtuOcS8Qy6NQ3hPjlCuHBtTFW6tNe
 # Clience Secret fe7qxmZBPQVxV4dmec7ksecmfx4c7CUaGWhiYlGh
 # Access Token nyBfPgKu009XmCNYIPBUqHUJANUy09
-from JK_Files import touch_tunes_test
+from JK_Files import TouchTunes
 import requests
 
 URL = "https://conuhacks-playback-api.touchtunes.com/"
 
-plays = touch_tunes_test.get_plays(URL,"2018-03-19","21:00:00","2018-03-19","22:00:00",0)
+plays = TouchTunes.get_plays(URL,"2018-03-19","21:00:00","2018-03-19","22:00:00",0)
 
 print(plays["longitude"])
 

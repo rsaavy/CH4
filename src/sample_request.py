@@ -5,14 +5,10 @@ Spyder Editor
 @Roy Angelo Saavedra
 """
 
-
-import requests 
-import json
-
-url = "https://conuhacks-playback-api.touchtunes.com/song/11088314"
-headers = {"client-secret":"9923ac9b-8fd3-421f-b0e5-952f807c6885"}
-
-
-call_api = requests.get(url, headers=headers)
-print(call_api.text)
-
+class ArtistQuery:
+    def __init__(self,token):
+        self.token = token
+        self.headers = {'Authorization': 'Bearer ' + str(token)}
+        self.base_url = "http://api.genius.com"
+    
+    def _get_artist_id__(self,artist):

@@ -106,7 +106,7 @@ class ArtistQuery:
         return albums_list
 
 if __name__ == '__main__':
-    artist_name = "Drake"
+    artist_name = argv[1]
     artist = ArtistQuery(client_access_token)
     albums_list = artist.get_album_csv(artist_name, artist_name + '.csv')
     import pandas as pd

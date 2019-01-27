@@ -6,7 +6,7 @@ Created on Sat Jan 26 15:23:38 2019
 
 @author: johnkim
 """
-#from TouchTunes import TouchTunes
+from TouchTunes import TouchTunes
 #import matplotlib.pyplot as plt
 import pandas as pd
 #from bokeh.io import show, output_file
@@ -17,12 +17,12 @@ from flask import Flask, request, render_template, abort, Response
 
 #Data set 
 '''
-If we ever want to call 
-#tt = TouchTunes("2018-02-19","21:00:00","2018-02-19","22:00:00",0)
-#x = tt.consolidate()
-'''
+If we ever want to call '''
+tt = TouchTunes("2018-02-19","21:00:00","2018-02-19","22:00:00",0)
+tt = tt.consolidate()
+
 # Use local file instead
-tt = pd.read_csv("/Users/johnkim/Documents/GitHub/CH4/JK_Files/export.csv")
+#tt = pd.read_csv("/Users/johnkim/Documents/GitHub/CH4/JK_Files/export.csv")
 # Basic visualizations! 
 # Count State 
 state = tt["state"].value_counts()

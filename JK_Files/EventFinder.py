@@ -1,7 +1,7 @@
 # Client ID phq.aFf5H8cwziREtuOcS8Qy6NQ3hPjlCuHBtTFW6tNe
 # Clience Secret fe7qxmZBPQVxV4dmec7ksecmfx4c7CUaGWhiYlGh
 # Access Token nyBfPgKu009XmCNYIPBUqHUJANUy09
-#import TouchTunes
+import TouchTunes
 import requests
 from pandas.io.json import json_normalize
 import pandas as pd

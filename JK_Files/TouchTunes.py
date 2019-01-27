@@ -63,5 +63,5 @@ class TouchTunes:
 # Example implementation
 tt = TouchTunes("2018-02-19","21:00:00","2018-02-19","22:00:00",0)
 touch_tunes_df = tt.consolidate()
-touch_tunes_df.to_csv("/Users/johnkim/Documents/GitHub/CH4/JK_Files/export.csv")
+touch_tunes_df.to_csv("../data/export.csv",index=False)
 

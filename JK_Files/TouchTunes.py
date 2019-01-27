@@ -10,6 +10,7 @@ Created on Sat Jan 26 12:18:19 2019
 import requests 
 from pandas.io.json import json_normalize
 import pandas as pd
+import os
 
 class TouchTunes: 
     
@@ -42,7 +43,6 @@ class TouchTunes:
         return(json_normalize(artist_json))
 
  
-    #def __get_plays(self,URL,start_date,start_time,end_date,end_time,offset): 
     def __get_plays(self):
         '''
         Gets active plays 
@@ -59,6 +59,9 @@ class TouchTunes:
         self.plays["songName"] = self.plays["songId"].apply(lambda ident: self.__get_song(ident)["songTitle"])
         return(self.plays.drop(["artistId","songId"],axis=1))
         
+        
 # Example implementation
-c = TouchTunes("2018-02-19","21:00:00","2018-02-19","22:00:00",0)
-x = c.consolidate()
+tt = TouchTunes("2018-02-19","21:00:00","2018-02-19","22:00:00",0)
+touch_tunes_df = tt.consolidate()
+touch_tunes_df.to_csv("/Users/johnkim/Documents/GitHub/CH4/JK_Files/export.csv")
+

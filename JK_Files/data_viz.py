@@ -15,7 +15,7 @@ from bokeh.plotting import figure
 from bokeh.embed import components
 from flask import Flask, request, render_template, abort, Response
 
-#Data set 
+#Data set
 '''
 If we ever want to call
 tt = TouchTunes("2018-02-19","21:00:00","2018-02-19","22:00:00",0)
@@ -23,28 +23,35 @@ tt = tt.consolidate()'''
 
 # Use local file instead
 tt_df = pd.read_csv("../data/export.csv")
-# Basic visualizations! 
-# Count State 
+# Basic visualizations!
+# Count State
 state = tt_df["state"].value_counts()
 # Count Style
 style = tt_df["style"].value_counts()
-# Count Artist 
+# Count Artist
 artist_name = tt_df["artistName"].value_counts()
 # Count Song Name
-song_name = tt_df["songName"].value_counts()
+#song_name = tt_df["songName"].value_counts()
 
-def plot_state_count(): 
+def plot_state_count():
     plot = figure(x_range=list(state.index),plot_height=300,title="State Count")
     plot.vbar(x=list(state.index), top=list(state), width=0.9)
     plot.xgrid.grid_line_color = None
-    plot.y_range.start = 0 
+    plot.y_range.start = 0
     return(plot)
 
 def plot_artist_count():
     plot = figure(x_range=list(artist_name.index),plot_height=300,title="Artist Count")
     plot.vbar(x=list(artist_name.index), top=list(artist_name), width=0.9)
     plot.xgrid.grid_line_color = None
-    plot.y_range.start = 0 
+    plot.y_range.start = 0
+    return(plot)
+
+def plot_style_count():
+    plot = figure(x_range=list(style.index),plot_height=300,title="Style Count")
+    plot.vbar(x=list(style.index), top=list(style), width=0.9)
+    plot.xgrid.grid_line_color = None
+    plot.y_range.start = 0
     return(plot)
 
 app = Flask(__name__)
@@ -52,17 +59,19 @@ app = Flask(__name__)
 @app.route('/')
 
 def visualize():
-    
+
     state = plot_state_count()
     artist = plot_artist_count()
-    p = row(state,artist)
+    style = plot_style_count()
+
+    p = row(state,artist,style)
     div,script = components(p)
-    
+
     kwargs = {'plot_script': script, 'plot_div': div}
-    
+
     if request.method == 'GET':
-        return render_template('main.html', **kwargs)
-    
+        return render_template('viz.html', **kwargs)
+
     abort(404)
     abort(Response('Hello'))
 
@@ -73,7 +82,7 @@ if __name__ == '__main__':
 '''
 # Count Style
 style = tt_df["style"].value_counts()
-# Count Artist 
+# Count Artist
 artist_name = tt_df["artistName"].value_counts()
 # Count Song Name
 song_name = tt_df["songName"].value_counts()

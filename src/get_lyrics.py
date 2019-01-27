@@ -13,7 +13,7 @@ from pandas.io.json import json_normalize
 # Load the Token 
 TOKEN = 'fJ4NznrGcAKh-LRqz6mPmmfDIOlXuhV1HdU2FWUVfp6NDxzmqrv_9YRmDu7JlOzw'
 
-# Build a wrapper for song info
+# Build a wrapper for song info, that requires new song_title and artist name
 def request_song_info(song_title, artist_name):
     base_url = 'https://api.genius.com'
     headers = {'Authorization': 'Bearer ' + str(TOKEN)}
@@ -38,9 +38,21 @@ def scrap_song_url(url):
     html = BeautifulSoup(page.text, 'html.parser')
     lyrics = html.find('div', class_='lyrics').get_text()
     return lyrics
-# I need to remove and add lyrics into the original data frame
-for ix,url in enumerate(data['url']):
-    lyric = scrap_song_url(url)
-    lyrics = lyric.rstrip('\n')
-    print(lyrics)
-    data['lyrics'] = data['lyrics'].
+temp = pd.DataFrame()
+stat = pd.DataFrame()
+for index,url in enumerate(data['url']):
+    lyrics = scrap_song_url(data.iat[index,15])
+    lyrics = lyrics.rstrip('\n')
+    lyrics = lyrics.lstrip()
+    lyrics = lyrics.rstrip()
+    data.iat[index,16]= lyrics
+    temp = temp.append(json_normalize(data['primary_artist'][index]),ignore_index=True)
+    stat = stat.append(json_normalize(data['stats'][index]),ignore_index=True)
+
+frames = [data,stat,temp]
+results = pd.concat(frames,axis=1)
+
+# Export the Lyrics 
+results.to_csv("../data/Lyrics.csv",index=False)
+
+    

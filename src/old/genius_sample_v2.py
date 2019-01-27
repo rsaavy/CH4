@@ -8,11 +8,12 @@ Created on Sat Jan 26 14:30:56 2019
 import requests
 from bs4 import BeautifulSoup
 
+TOKEN = '8rhU2EeUS-S0QiVlAW1G3TKf_xb6W-NKZWlO-epQJrDtq2H_z6wG_dXFuGHtBlXT'
 base_url = "http://api.genius.com"
-headers = {'Authorization': 'Bearer TOKEN'}
+headers = {'Authorization': 'Bearer'+str(TOKEN)}
 
-song_title = "Lake Song"
-artist_name = "The Decemberists"
+song_title = "creep"
+artist_name = "Radiohead"
 
 def lyrics_from_song_api_path(song_api_path):
   song_url = base_url + song_api_path
@@ -41,4 +42,4 @@ if __name__ == "__main__":
       break
   if song_info:
     song_api_path = song_info["result"]["api_path"]
-    print lyrics_from_song_api_path(song_api_path)
+    print (lyrics_from_song_api_path(song_api_path))

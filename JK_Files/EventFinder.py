@@ -1,7 +1,7 @@
 # Client ID phq.aFf5H8cwziREtuOcS8Qy6NQ3hPjlCuHBtTFW6tNe
 # Clience Secret fe7qxmZBPQVxV4dmec7ksecmfx4c7CUaGWhiYlGh
 # Access Token nyBfPgKu009XmCNYIPBUqHUJANUy09
-import TouchTunes
+#import TouchTunes
 import requests
 from pandas.io.json import json_normalize
 import pandas as pd
@@ -32,7 +32,7 @@ def mergeEvent(df):
     df = df.drop(["index", "state_x", "category", "country", "duration", "end", "first_seen", "labels", "rank", "relevance", "scope", "state_y", "timezone", "updated", "key"], axis = 1)
     return df
 
-c = TouchTunes.TouchTunes("2018-02-19","21:00:00","2018-02-19","22:00:00",0)
+'''c = TouchTunes.TouchTunes("2018-02-19","21:00:00","2018-02-19","22:00:00",0)
 x = c.consolidate().drop_duplicates().reset_index()
 
-nuX = mergeEvent(x)
+nuX = mergeEvent(x)'''

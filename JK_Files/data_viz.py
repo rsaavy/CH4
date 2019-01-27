@@ -14,6 +14,7 @@ from bokeh.layouts import row
 from bokeh.plotting import figure
 from bokeh.embed import components
 from flask import Flask, request, render_template, abort, Response
+from flask_table import Table, Col
 
 #Data set 
 '''
@@ -68,6 +69,14 @@ def visualize():
 
 if __name__ == '__main__':
     app.run(debug=True)
+class ItemTable(Table):
+    name = Col('Name')
+    description = Col('Description')
+    
+items = tt_df.query.all()
+
+# Populate the table
+table = ItemTable(items)
 
 
 '''

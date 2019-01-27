@@ -7,9 +7,7 @@ Created on Sat Jan 26 15:23:38 2019
 @author: johnkim
 """
 from TouchTunes import TouchTunes
-#import matplotlib.pyplot as plt
 import pandas as pd
-#from bokeh.io import show, output_file
 from bokeh.layouts import row
 from bokeh.plotting import figure
 from bokeh.embed import components
@@ -57,15 +55,14 @@ def plot_style_count():
 
 app = Flask(__name__)
 
-@app.route('/')
-
-def visualize():
+def visualize_counts():
 
     state = plot_state_count()
     artist = plot_artist_count()
     style = plot_style_count()
 
     p = row(state,artist,style)
+
     div,script = components(p)
 
     kwargs = {'plot_script': script, 'plot_div': div}
@@ -76,17 +73,20 @@ def visualize():
     abort(404)
     abort(Response('Hello'))
 
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+'''
 class ItemTable(Table):
     name = Col('Name')
     description = Col('Description')
-    
+
 items = tt_df.query.all()
 
 # Populate the table
 table = ItemTable(items)
-
+'''
 
 '''
 # Count Style

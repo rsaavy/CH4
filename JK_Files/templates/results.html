@@ -11,15 +11,102 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <!-- Bokeh Imports -->
+    <link href="https://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.0.4.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.js"></script>
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.js"></script>
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.0.4.min.js"></script>
+    <!-- Map imports -->
+    {{sndmap0.js}}
+    {{sndmap1.js}}
+    {{sndmap2.js}}
+    {{sndmap3.js}}
+      <style>
+  .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+  </style>
   </head>
 
   <body>
     <h1>Musical.ly Results</h1>
 
-    <div class="container">
+    <h2>Visualizations</h2>
 
-    {{table|safe}}
+      <div>
+      {{ plot_div|safe }}
+      {{ plot_script|safe }}
+      </div>
+
+
+    <div class="container">
+      <button class="collapsible">Reveal Data Set</button>
+        <div class="content">
+          <p>
+        {{table|safe}}
+        </p>
+      </div>
     </div>
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            {{sndmap0.html}}
+          </div>
+          <div class="col-md-6">
+            {{sndmap1.html}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            {{sndmap2.html}}
+          </div>
+          <div class="col-md-6">
+            {{sndmap3.html}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
 
   </body>
 </html>

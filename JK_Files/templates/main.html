@@ -12,8 +12,9 @@
     <script src="https://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.js"></script>
     <script src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.js"></script>
     <script src="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.0.4.min.js"></script>
-  
+<!--
   <style>
+
     .flex{
       display: flex;
       flex-direction: row;
@@ -26,21 +27,19 @@
       text-align: left;
       width: 800px;
       }
+
   </style>
+-->
   </head>
 
   <body>
     <h1>Music Analytics</h1>
-    <div class="centred">
+
       <div>
       {{ plot_div|safe }}
       {{ plot_script|safe }}
     </div>
-  </div>
-    <div>
-        {{ plot_div|safe }}
-        {{ plot_script|safe }}
-    </div>
+
   </body>
 
 </html>

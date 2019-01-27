@@ -10,7 +10,7 @@ from TouchTunes import TouchTunes
 #import matplotlib.pyplot as plt
 import pandas as pd
 #from bokeh.io import show, output_file
-
+from bokeh.layouts import row
 from bokeh.plotting import figure
 from bokeh.embed import components
 from flask import Flask, request, render_template, abort, Response
@@ -41,7 +41,7 @@ def plot_state_count():
     return(plot)
 
 def plot_artist_count():
-    plot = figure(x_range=list(artist_name.index),plot_height=300,title="Artist Count",toolbar_location=None, tools="")
+    plot = figure(x_range=list(artist_name.index),plot_height=300,title="Artist Count")
     plot.vbar(x=list(artist_name.index), top=list(artist_name), width=0.9)
     plot.xgrid.grid_line_color = None
     plot.y_range.start = 0 
@@ -53,7 +53,9 @@ app = Flask(__name__)
 
 def visualize():
     
-    p = plot_state_count()
+    state = plot_state_count()
+    artist = plot_artist_count()
+    p = row(state,artist)
     div,script = components(p)
     
     kwargs = {'plot_script': script, 'plot_div': div}

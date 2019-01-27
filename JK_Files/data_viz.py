@@ -17,12 +17,12 @@ from flask import Flask, request, render_template, abort, Response
 
 #Data set 
 '''
-If we ever want to call '''
+If we ever want to call
 tt = TouchTunes("2018-02-19","21:00:00","2018-02-19","22:00:00",0)
-tt = tt.consolidate()
+tt = tt.consolidate()'''
 
 # Use local file instead
-#tt = pd.read_csv("/Users/johnkim/Documents/GitHub/CH4/JK_Files/export.csv")
+tt_df = pd.read_csv("../data/export.csv")
 # Basic visualizations! 
 # Count State 
 state = tt_df["state"].value_counts()

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <title>Tun.Ak Music Analytics</title>
-    <link rel="stylesheet" type="text/css" href="search.css">
+    <link rel="stylesheet" type="text/css" href="css/search.css">
     <!-- A bunch of bootystrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -18,12 +18,41 @@
       margin-right: auto;
       width: 50%;
     }
+    body {
+      background: radial-gradient(rgb(255, 153, 51), rgb(255, 255, 255), rgb(19, 136, 8));
+    }
+
+    .title{
+      text-align: center;
+    }
+    .r-align {
+      text-align: right;
+      align: right;
+    }
+
+    .image {
+      top: 50%;
+left: 50%;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    align: center;
+    margin:-60px 0 0 -60px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
     </style>
   </head>
 
   <body>
-    <h1>Tun.Ak</h1>
-    <img class="center" src="https://media.giphy.com/media/l46CmlsXGE36mOITK/giphy.gif">
+    <h1 class="title">Tun.Ak</h1>
+    <br><br><br><br><br>
+    <img class="image center" src="https://media.giphy.com/media/l46CmlsXGE36mOITK/giphy.gif">
     <div class="container">
       <p><b>Search for all events between a specific timeline</b></p>
     </div>
@@ -35,12 +64,12 @@
 
             <div class="col-md-6">
               <p><b>Start Date:</b></p>
-              <input type="date" id="start-date" name="start-date">
+              <input type="date" id="start-date" name="start-date" value="2018-02-09">
             </div>
 
             <div class="col-md-6">
               <p><b>End Date:</b></p>
-              <input type="date" id="end-date" name="end-date">
+              <input type="date" id="end-date" name="end-date" value="2018-02-19">
             </div>
 
           </div>
@@ -51,6 +80,9 @@
       </div>
       </form>
     </div>
-
+  <br><br><br><br>
   </body>
+  <hr>
+  <br><br>
+  <footer class="title">Made with a lot of love for ConUHacksIV! &lt3 Copyright 2019.</footer>
 </html>

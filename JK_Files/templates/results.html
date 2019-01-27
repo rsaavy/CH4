@@ -4,8 +4,8 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Musical.ly</title>
-    <link rel="stylesheet" type="text/css" href="search.css">
+    <title>Tun.Ak Music Analytics Results</title>
+    <link rel="stylesheet" href="search.css">
     <!-- A bunch of bootystrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -46,11 +46,29 @@
     overflow: hidden;
     background-color: #f1f1f1;
   }
+  h2 {
+    font-style: italic;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  body {
+    background: radial-gradient(rgb(255, 153, 51), rgb(255, 255, 255), rgb(19, 136, 8));
+  }
+
+  .title{
+    text-align: center;
+  }
+
+
   </style>
   </head>
 
   <body>
-    <h1>Musical.ly Results</h1>
+    <h1 class="title">Tun.Ak Results</h1>
 
     <h2>Visualizations</h2>
 
@@ -59,7 +77,33 @@
       {{ plot_script|safe }}
       </div>
 
+    <div>
+      <h2> Events Happening within 100km of Retrieved Results</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>New York</h5>
+            {{sndmap0.html}}
+          </div>
+          <div class="col-md-6">
+            <h5>FairFax</h5>
+            {{sndmap1.html}}
+          </div>
+        </div>
 
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Washington, D.C.</h5>
+            {{sndmap2.html}}
+          </div>
+          <div class="col-md-6">
+            <h5>Ankeny</h5>
+            {{sndmap3.html}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
     <div class="container">
       <button class="collapsible">Reveal Data Set</button>
         <div class="content">
@@ -68,28 +112,6 @@
         </p>
       </div>
     </div>
-    <div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            {{sndmap0.html}}
-          </div>
-          <div class="col-md-6">
-            {{sndmap1.html}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            {{sndmap2.html}}
-          </div>
-          <div class="col-md-6">
-            {{sndmap3.html}}
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script>
 var coll = document.getElementsByClassName("collapsible");
 var i;
@@ -107,6 +129,10 @@ for (i = 0; i < coll.length; i++) {
 }
 </script>
 
-
+  <br><br><br><br>
   </body>
+
+  <hr>
+  <br><br>
+  <footer class="title">Made with a lot of love for ConUHacksIV! &lt3 Copyright 2019.</footer>
 </html>

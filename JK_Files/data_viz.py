@@ -59,7 +59,7 @@ def visualize():
     kwargs = {'plot_script': script, 'plot_div': div}
     
     if request.method == 'GET':
-        return render_template('index.html', **kwargs)
+        return render_template('main.html', **kwargs)
     
     abort(404)
     abort(Response('Hello'))

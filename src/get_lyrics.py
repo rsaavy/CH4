@@ -38,3 +38,9 @@ def scrap_song_url(url):
     html = BeautifulSoup(page.text, 'html.parser')
     lyrics = html.find('div', class_='lyrics').get_text()
     return lyrics
+# I need to remove and add lyrics into the original data frame
+for ix,url in enumerate(data['url']):
+    lyric = scrap_song_url(url)
+    lyrics = lyric.rstrip('\n')
+    print(lyrics)
+    data['lyrics'] = data['lyrics'].
